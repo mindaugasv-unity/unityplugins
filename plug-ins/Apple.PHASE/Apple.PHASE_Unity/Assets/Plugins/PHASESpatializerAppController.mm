@@ -1,3 +1,8 @@
+// ObjC project type counterpart of PHASESpatializerSwiftRegistration.mm.
+//
+// This file is masked to "XcodeProjectType: ObjectiveC" in its .meta, so exactly one of the two
+// registration files is compiled into any given Xcode project.
+
 #import "UnityAppController.h"
 
 extern "C" {

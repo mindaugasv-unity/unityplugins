@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ba7088b24bc64c11a448a0804fb5463
+guid: 0816b5750fcb44e09f1ce64fde1b05da
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -70,7 +70,7 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
+        XcodeProjectType: Swift
   - first:
       iPhone: iOS
     second:
@@ -80,7 +80,7 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
+        XcodeProjectType: Swift
   - first:
       tvOS: tvOS
     second:
@@ -90,7 +90,7 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
+        XcodeProjectType: Swift
   userData: 
   assetBundleName: 
   assetBundleVariant: 
