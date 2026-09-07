@@ -1,10 +1,3 @@
-// ObjC project type counterpart of PHASESpatializerSwiftRegistration.mm.
-//
-// This file is masked to "XcodeProjectType: ObjectiveC" in its .meta, so exactly one of the two
-// registration files is compiled into any given Xcode project.
-
-#import "UnityAppController.h"
-
 extern "C" {
 struct UnityAudioEffectDefinition;
 typedef int (*UnityPluginGetAudioEffectDefinitionsFunc)(
@@ -13,6 +6,41 @@ extern void UnityRegisterAudioPlugin(
     UnityPluginGetAudioEffectDefinitionsFunc getAudioEffectDefinitions);
 extern int UnityGetAudioEffectDefinitions(UnityAudioEffectDefinition*** definitionptr);
 }  // extern "C"
+
+#if UNITY_XCODE_PROJECT_TYPE_SWIFT
+
+#import <Foundation/Foundation.h>
+#import <UnityAPI/UnityAPI-Swift.h>
+
+@interface PHASESpatializerRegistration : NSObject
+@end
+
+@implementation PHASESpatializerRegistration
+
+static id sPHASERuntimeInitObserver = nil;
+
++ (void)load
+{
+    sPHASERuntimeInitObserver =
+        [[NSNotificationCenter defaultCenter] addObserverForName:UnityNotifications.unityDidInitializeRuntime
+                                                          object:nil
+                                                           queue:nil
+                                                      usingBlock:^(NSNotification* note) {
+            UnityRegisterAudioPlugin(UnityGetAudioEffectDefinitions);
+
+            if (sPHASERuntimeInitObserver != nil)
+            {
+                [[NSNotificationCenter defaultCenter] removeObserver:sPHASERuntimeInitObserver];
+                sPHASERuntimeInitObserver = nil;
+            }
+        }];
+}
+
+@end
+
+#else
+
+#import "UnityAppController.h"
 
 @interface PHASESpatializerAppController : UnityAppController
 - (void)shouldAttachRenderDelegate;
@@ -26,3 +54,5 @@ extern int UnityGetAudioEffectDefinitions(UnityAudioEffectDefinition*** definiti
 
 @end
 IMPL_APP_CONTROLLER_SUBCLASS(PHASESpatializerAppController);
+
+#endif

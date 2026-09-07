@@ -70,7 +70,6 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
   - first:
       iPhone: iOS
     second:
@@ -80,7 +79,6 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
   - first:
       tvOS: tvOS
     second:
@@ -90,7 +88,6 @@ PluginImporter:
         CPU: AnyCPU
         CompileFlags: 
         FrameworkDependencies: 
-        XcodeProjectType: ObjectiveC
   userData: 
   assetBundleName: 
   assetBundleVariant: 
